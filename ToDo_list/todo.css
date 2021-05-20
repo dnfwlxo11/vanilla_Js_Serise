@@ -3,6 +3,12 @@
     to   { opacity: 1; }
 }
 
+@keyframes fadein_li {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+
 body {
     background-color: #ecf0f1;
     text-align: center;
@@ -16,12 +22,25 @@ body {
     animation: fadein 2s;
 }
 
-.js-greetings {
+.js-greetings,
+.js-todo-title {
     animation: fadein 4s;
+    color: #ecf0f1;
 }
 
 .js-todo-input {
+    width: 40%;
+    line-height: 50px;
     animation: fadein 4s;
+    padding-left: 30px;
+    margin-bottom: 100px;
+    font-size: 40px;
+    color: #ecf0f1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 5px solid #ecf0f1;
+    text-align: center;
 }
 
 .js-button {
@@ -70,7 +89,8 @@ li > span {
     padding: 20px;
     word-break:break-all;
     opacity: 0.8;
-    text-shadow: 2px 1px 1px gray;
+    animation: fadein_li 1s;
+    text-shadow: 2px 1px 1px gray;    
 }
 
 .clicked {
@@ -87,7 +107,8 @@ li > span {
 }
 
 .backgroundImage {
-    position: absolute;
+    position: fixed;
+    background-attachment: fixed;
     top: 0;
     left: 0;
     width: 100%;

@@ -1,15 +1,16 @@
 const $todo_form = document.createElement('form'),
     $todo_input = document.createElement('input'),
     $todo_button = document.createElement('button'),
-    $todo_ul = document.createElement('ul');
+    $todo_ul = document.createElement('ul'),
+    $todo_title = document.createElement('h2');
 
 $todo_form.setAttribute('class', 'js-todo-form');
 $todo_input.setAttribute('class', 'js-todo-input');
 $todo_input.setAttribute('type', 'textarea');
-$todo_input.setAttribute('placeholder', '메모를 입력하세요');
 // $todo_button.setAttribute('class', 'js-todo-button');
 // $todo_button.setAttribute('type', 'submit');
-$todo_ul.setAttribute('class', 'js-todo-ul')
+$todo_ul.setAttribute('class', 'js-todo-ul');
+$todo_title.setAttribute('class', 'js-todo-title');
 
 const TODO = 'todos';
 let Todos = [];
@@ -83,13 +84,15 @@ function loadTodo() {
 
 function init() {
     const body = document.querySelector('body');
+    body.appendChild($todo_title);
     body.appendChild($todo_form);
     $todo_form.appendChild($todo_input);
     $todo_form.addEventListener('submit', handleSubmit);
     // $todo_form.appendChild($todo_button);
+    $todo_title.innerText = `오늘 ${localStorage.getItem('name')}님이  할 일은 무엇인가요?`
     body.appendChild($todo_ul);
 
-    $todo_button.innerText = '추가';
+    // $todo_button.innerText = '추가';
 
     loadTodo();
 }

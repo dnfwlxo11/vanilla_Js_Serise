@@ -17,7 +17,6 @@ function getWeather(lat, lon) {
 }
 
 function handleGeoSuccess(position) {
-    console.log(position);
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
