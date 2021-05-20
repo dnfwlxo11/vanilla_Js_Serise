@@ -1,31 +1,28 @@
-const $h4 = document.createElement('h4'),
-    form = document.querySelector('js-form'),
-    input = document.querySelector('js-input');
+const $greeting_h4 = document.createElement('h4');
 
-$h4.setAttribute('class', 'js-greetings');
+$greeting_h4.setAttribute('class', 'js-greetings');
 
 const USER = 'name',
     SHOW = 'showing';
 
 function handleSubmit(e) {
     e.preventDefault();
-    const value = $input.value;
+    const value = $name_input.value;
     paintGreeting(value)
     localStorage.setItem(USER, value);
-    $form.classList.remove(SHOW);
-    $form.classList.add('greetings');
+    $name_form.classList.remove(SHOW);
+    $name_form.classList.add('greetings');
 }
 
 function loadForm() {
-    console.log(form)
-    $form.classList.add(SHOW);
-    $form.addEventListener('submit', handleSubmit);
+    $name_form.classList.add(SHOW);
+    $name_form.addEventListener('submit', handleSubmit);
 }
 
 function paintGreeting(text) {
-    $form.classList.remove(SHOW);
-    $h4.classList.add(SHOW);
-    $h4.innerText = `안녕하세요 ${text}님`;
+    $name_form.classList.remove(SHOW);
+    $greeting_h4.classList.add(SHOW);
+    $greeting_h4.innerText = `안녕하세요 ${text}님`;
 }
 
 function loadName() {
@@ -34,7 +31,7 @@ function loadName() {
     if (user === null) {
         loadForm();
     } else {
-        $form.classList.add('form-none');
+        $name_form.classList.add('form-none');
         paintGreeting(user)
     }
 }
@@ -42,10 +39,10 @@ function loadName() {
 function init() {
     const $body = document.querySelector('body');
 
-    $form.classList.add('showing');
-    $h4.classList.add('greetings');
+    $name_form.classList.add('showing');
+    $greeting_h4.classList.add('greetings');
 
-    $body.appendChild($h4);
+    $body.appendChild($greeting_h4);
 
     loadName()
 }

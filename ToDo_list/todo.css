@@ -1,5 +1,6 @@
 body {
     background-color: #ecf0f1;
+    text-align: center;
 }
 
 .js-button {
@@ -9,6 +10,22 @@ body {
 h1 {
     color: #34495e;
     transition: color 0.5s ease-in-out;
+}
+
+ul {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+li > span {
+    background-color: darkcyan;
+    margin-right: 5px;
 }
 
 .clicked {
