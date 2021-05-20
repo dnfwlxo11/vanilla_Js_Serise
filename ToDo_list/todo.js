@@ -5,7 +5,7 @@ const $todo_form = document.createElement('form'),
 
 $todo_form.setAttribute('class', 'js-todo-form');
 $todo_input.setAttribute('class', 'js-todo-input');
-$todo_input.setAttribute('type', 'text');
+$todo_input.setAttribute('type', 'textarea');
 $todo_input.setAttribute('placeholder', '메모를 입력하세요');
 // $todo_button.setAttribute('class', 'js-todo-button');
 // $todo_button.setAttribute('type', 'submit');
@@ -22,7 +22,6 @@ function deleteTodo(e) {
         return Todos.id !== parseInt(target_li.id)
     });
 
-    console.log(Todos, removed_Todos)
     Todos = removed_Todos;
     saveTodos();
 }
@@ -32,30 +31,34 @@ function saveTodos() {
 }
 
 function paintTodo(text) {
-    const $li = document.createElement('li')
-    $todo_ul.appendChild($li);
+    if (text === '') {
+        alert('내용을 입력해주세요.')
+    } else {
+        const $li = document.createElement('li')
+        $todo_ul.appendChild($li);
 
-    const $deleteBtn = document.createElement('button');
-    $deleteBtn.innerText = "X";
-    $deleteBtn.addEventListener('click', deleteTodo);
+        const $deleteBtn = document.createElement('button');
+        $deleteBtn.innerText = "X";
+        $deleteBtn.addEventListener('click', deleteTodo);
 
-    const $span = document.createElement('span');
-    $span.innerText = text;
+        const $span = document.createElement('span');
+        $span.innerText = text;
 
-    const newId = Todos.length + 1;
+        const newId = Todos.length + 1;
 
-    $li.id = newId;
+        $li.id = newId;
 
-    $li.appendChild($span);
-    $li.appendChild($deleteBtn);
+        $li.appendChild($span);
+        $li.appendChild($deleteBtn);
 
-    const todoObj = {
-        text: text,
-        id: newId
-    };
+        const todoObj = {
+            text: text,
+            id: newId
+        };
 
-    Todos.push(todoObj);
-    saveTodos();
+        Todos.push(todoObj);
+        saveTodos();
+    }
 }
 
 function handleSubmit(e) {
