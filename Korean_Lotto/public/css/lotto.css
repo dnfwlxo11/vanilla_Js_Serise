@@ -1,0 +1,34 @@
+.td {
+	height: 480px;
+	width: 480px;
+}
+
+#parent_div {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+#wrap_div {
+	height: 50%;
+	display: inline-block;
+}
+
+#wrap_div div {
+	margin: 10px;
+	line-height: 240px;
+	background-image: url('../src/lottoBall_1.png');
+	background-size: 240px 240px;
+	display: inline-block;
+	height: 240px;
+	width: 240px;
+	word-break:break-all;
+	font-size: 30px;
+	text-shadow: 1px 1px 2px;
+}
+
+#lottoNum {
+	position: absolute;
+	font-weight: bold;
+	font-size: 1.8em
+}

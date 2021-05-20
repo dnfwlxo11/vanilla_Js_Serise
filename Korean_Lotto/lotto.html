@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Js Exam</title>
+	<link rel='stylesheet' href='public/css/lotto.css'>
+</head>
+
+<body>
+	<div id='parent_div'>
+		<div id='wrap_div'>
+			<div>?</div>
+			<div>?</div>
+			<div>?</div>
+			<div>?</div>
+			<div>?</div>
+			<div>?</div>
+			<p></p>
+			<div>?</div>
+		</div>
+
+		<p></p>
+		<button id='startLotto'>Start!</button>
+		<button id='resetLotto'>Init Number</button>
+	</div>
+</body>
+<script src='lotto.js'></script>
+<script>
+	let lottoDiv = document.querySelectorAll('#wrap_div div');
+
+	document.querySelector('#startLotto').addEventListener('click', function () {
+		changeTable(Array.from(chooseNum()), lottoDiv)
+	})
+
+	document.querySelector('#resetLotto').addEventListener('click', function () {
+		resetTable(lottoDiv)
+	})
+
+	resetTable()
+</script>
+
+</html>
