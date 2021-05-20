@@ -12,6 +12,8 @@ function handleSubmit(e) {
     const value = $input.value;
     paintGreeting(value)
     localStorage.setItem(USER, value);
+    $form.classList.remove(SHOW);
+    $form.classList.add('greetings');
 }
 
 function loadForm() {
