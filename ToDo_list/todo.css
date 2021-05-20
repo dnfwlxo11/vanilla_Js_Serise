@@ -26,6 +26,14 @@ li {
 li > span {
     background-color: darkcyan;
     margin-right: 5px;
+
+    display: inline-block;
+    width: 300px;
+
+    vertical-align: middle;
+    padding: 20px;
+
+    word-break:break-all;
 }
 
 .clicked {
