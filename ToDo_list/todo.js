@@ -82,6 +82,17 @@ function loadTodo() {
     }
 }
 
+function paintTodoTitle() {
+    const user = localStorage.getItem(USER);
+    const todo_title = document.querySelector('.js-todo-title');
+
+    if (user === null) {
+        todo_title.innerText = '오늘 사용자님이 할 일은 무엇인가요?';
+    } else {
+        todo_title.innerText = `오늘 ${localStorage.getItem('name')}님이  할 일은 무엇인가요?`;
+    }
+}
+
 function init() {
     const body = document.querySelector('body');
     body.appendChild($todo_title);
@@ -89,7 +100,8 @@ function init() {
     $todo_form.appendChild($todo_input);
     $todo_form.addEventListener('submit', handleSubmit);
     // $todo_form.appendChild($todo_button);
-    $todo_title.innerText = `오늘 ${localStorage.getItem('name')}님이  할 일은 무엇인가요?`
+
+    paintTodoTitle()
     body.appendChild($todo_ul);
 
     // $todo_button.innerText = '추가';

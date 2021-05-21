@@ -25,14 +25,23 @@ function paintGreeting(text) {
     $greeting_h4.innerText = `안녕하세요 ${text}님`;
 }
 
+function updateTodoTitle() {
+    const user = localStorage.getItem(USER);
+    const todo_title = document.querySelector('.js-todo-title');
+
+    console.log('a', user, todo_title)
+}
+
 function loadName() {
     const user = localStorage.getItem(USER);
+    
 
     if (user === null) {
         loadForm();
     } else {
         $name_form.classList.add('form-none');
-        paintGreeting(user)
+        paintGreeting(user);
+        updateTodoTitle();
     }
 }
 
