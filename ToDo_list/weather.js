@@ -1,5 +1,5 @@
 const COORDS = 'coords';
-const API_KEY = '03c89758314f4f37ee120fad3b13cca8';
+const API_KEY = '';
 
 const $weather_span = document.createElement('span');
 $weather_span.setAttribute('class', 'js-date');
