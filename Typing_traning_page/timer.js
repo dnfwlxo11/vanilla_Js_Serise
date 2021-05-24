@@ -3,7 +3,7 @@ const $timer_div = document.createElement('div');
 $timer_div.setAttribute('class', 'timer-div');
 
 function setTimer() {
-    let getSecond = $timer_div.innerText;
+    const getSecond = $timer_div.innerText;
     $timer_div.innerText = parseInt(getSecond, 10) + 1;
 }
 
