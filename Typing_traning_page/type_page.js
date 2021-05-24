@@ -1,15 +1,24 @@
 const $type_wrap_div = document.createElement('div'),
     $type_sentence_div = document.createElement('div'),
-    $type_area = document.createElement('textarea');
+    $type_area = document.createElement('textarea'),
+    $type_start_btn = document.createElement('button');
 
 $type_wrap_div.setAttribute('class', 'type-wrap-div');
 $type_sentence_div.setAttribute('class', 'type-sentence-div');
 $type_area.setAttribute('class', 'type-area');
+$type_start_btn.setAttribute('class', 'type-start-btn');
 
 const SENTENCE_NUM = 5;
 
 $type_area.addEventListener('input', () => {
     checkSentence();
+})
+
+$type_start_btn.addEventListener('click', () => {
+    const timer_value = document.querySelector('.timer-div').innerText;
+
+    if (timer_value === '대기')
+        document.querySelector('.timer-div').innerText = 0;
 })
 
 function checkSentence() {
@@ -37,7 +46,7 @@ function checkSentence() {
     if (correct) {
         alert('모두 타이핑 하셨습니다. 계속하시려면 알림창을 닫아주세요')
         renderSentence()
-        document.querySelector('.timer-div').innerText = 0;
+        document.querySelector('.timer-div').innerText = '대기';
     };
 }
 
@@ -60,6 +69,9 @@ function init() {
     body.appendChild($type_wrap_div);
     $type_wrap_div.appendChild($type_sentence_div);
     $type_wrap_div.appendChild($type_area);
+    $type_wrap_div.appendChild($type_start_btn);
+
+    $type_start_btn.innerText = '시작하기'
 
     renderSentence();
 }
