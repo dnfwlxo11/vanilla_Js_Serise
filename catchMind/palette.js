@@ -31,7 +31,7 @@ function createFalette() {
         const $control_color = document.createElement('div');
 
         $control_color.setAttribute('class', 'controls-color');
-        $control_color.style.backgroundColor = color;
+        // $control_color.style.backgroundColor = color;
         // $control_color.style.width = '50px';
         // $control_color.style.height = '50px';
         // $control_color.style.borderRadius = '25px';
@@ -47,16 +47,21 @@ function init() {
     body.appendChild($canvas);
     body.appendChild($control_div);
 
+    console.log('팔레트 추가')
+
     $control_div.appendChild($control_btns);
 
     $control_btns.appendChild($control_btn_mode);
     $control_btns.appendChild($control_btn_save);
     $control_btn_mode.innerText = 'Fill'
     $control_btn_save.innerText = 'Save'
+    console.log('팔레트 버튼 추가')
 
     $control_div.appendChild($control_colors);
 
     createFalette();
+
+    console.log('팔레트 style')
 }
 
 init();
