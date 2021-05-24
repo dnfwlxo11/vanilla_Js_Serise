@@ -18,6 +18,10 @@ $control_range.setAttribute('class', 'controls-range');
 $control_range_input.setAttribute('id', 'jsRange');
 $control_range_input.setAttribute('class', 'controls-range-input');
 $control_range_input.setAttribute('type', 'range');
+$control_range_input.setAttribute('min', '0.1');
+$control_range_input.setAttribute('max', '5');
+$control_range_input.setAttribute('value', '2.5');
+$control_range_input.setAttribute('step', '0.1');
 
 const COLORS = [
     '#2c2c2c',
