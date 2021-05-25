@@ -75,7 +75,7 @@ function handleMode() {
 
     modeBtn.addEventListener('click', () => {
         mode ? mode = false : mode = true;
-        mode ? modeBtn.innerText = '그리기모드' : modeBtn.innerText = '채우기모드'
+        mode ? modeBtn.innerText = '채우기모드' : modeBtn.innerText = '연필모드'
         canvasEvent();
     })
 }
