@@ -13,13 +13,15 @@ $ans_input.setAttribute('type', 'text');
 function initQuestion() {
     const word = document.getElementsByClassName('word');
 
-    Array.from(word).forEach((item) => {
-        item.innerText = '?';
-    })
-
     $ans_input.value = '';
     localStorage.setItem('next', true);
     localStorage.setItem('answer', question.createWord());
+    
+    question.showTowordlength();
+
+    Array.from(word).forEach((item) => {
+        item.innerText = '?';
+    })
 }
 
 function submitAnswer(e) {
@@ -32,12 +34,11 @@ function submitAnswer(e) {
         if (answer === predict) {
             show_wordDiv()
             alert('정답입니다!!')
+            setTimeout(initQuestion, 3000)
         } else {
             alert('틀렸습니다.')
             $ans_input.value = '';
         }
-
-        setTimeout(initQuestion, 3000)
     }
 }
 

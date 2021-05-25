@@ -3,6 +3,7 @@ const $q_div = document.createElement('div');
 $q_div.setAttribute('class', 'words');
 
 const WORD_NUM = 5;
+const MAX_WORD = 7;
 
 function createNum() {
     return Math.floor(Math.random() * WORD_NUM);
@@ -17,17 +18,35 @@ function create_wordDiv() {
 
     if (next) {
         const word = createWord();
-
-        Array.from(word).forEach(() => {
+        for (let i=0;i<MAX_WORD;i++) {
             const $label = document.createElement('div');
+
             $label.setAttribute('class', 'word');
+            $label.classList.add('hide');
             $label.innerText = '?';
             $q_div.appendChild($label);
-        })
+        }
 
         localStorage.setItem('answer', word);
         localStorage.setItem('next', false);
+
+        showTowordlength()
     }
+}
+
+function showTowordlength() {
+    const word = localStorage.getItem('answer');
+    const word_div = Array.from(document.getElementsByClassName('word'));
+    console.log(word_div, word)
+
+    
+    word_div.forEach((item, index) => {
+        word_div[index].classList.add('hide');
+    })
+
+    Array.from(word).forEach((item, index) => {
+        word_div[index].classList.remove('hide');
+    })
 }
 
 function init() {
@@ -39,4 +58,4 @@ function init() {
 
 init();
 
-export default { createWord };
+export default { createWord, showTowordlength };
