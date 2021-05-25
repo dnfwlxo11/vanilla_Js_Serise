@@ -45,6 +45,7 @@ function createFalette() {
     })
 }
 
+
 function init() {
     const body = document.querySelector('body');
 
