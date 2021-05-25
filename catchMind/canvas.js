@@ -116,7 +116,6 @@ function init() {
 
         handleMode();
 
-        console.log(saveBtn, range)
         if (saveBtn) {
             saveBtn.addEventListener('click', handleSave);
         }
