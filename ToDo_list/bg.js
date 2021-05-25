@@ -1,6 +1,6 @@
 const body = document.querySelector('body');
 
-const IMAGE_NUM = 4;
+const IMAGE_NUM = 3;
 
 function selectBg() {
     const num = Math.floor(Math.random()*IMAGE_NUM) + 1;
