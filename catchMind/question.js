@@ -4,25 +4,30 @@ $q_div.setAttribute('class', 'words');
 
 const WORD_NUM = 5;
 
-function show_wordDiv() {
-    Array.from(word).forEach((item) => {
-        const $label = document.createElement('div');
-        $label.setAttribute('class', 'word');
-        $label.innerText = item;
-        $q_div.appendChild($label);
-    })
+function createNum() {
+    return Math.floor(Math.random() * WORD_NUM);
+}
+
+function createWord() {
+    return localStorage.getItem(`word_${createNum()}`);
 }
 
 function create_wordDiv() {
-    const randomNum = Math.floor(Math.random() * WORD_NUM);
-    const word = localStorage.getItem(`word_${randomNum}`);
+    const next = localStorage.getItem('next');
 
-    Array.from(word).forEach(() => {
-        const $label = document.createElement('div');
-        $label.setAttribute('class', 'word');
-        $label.innerText = '?';
-        $q_div.appendChild($label);
-    })
+    if (next) {
+        const word = createWord();
+
+        Array.from(word).forEach(() => {
+            const $label = document.createElement('div');
+            $label.setAttribute('class', 'word');
+            $label.innerText = '?';
+            $q_div.appendChild($label);
+        })
+
+        localStorage.setItem('answer', word);
+        localStorage.setItem('next', false);
+    }
 }
 
 function init() {
@@ -33,3 +38,5 @@ function init() {
 }
 
 init();
+
+export default { createWord };
