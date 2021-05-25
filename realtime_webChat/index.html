@@ -1,14 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유롭게 채팅하세요</title>
 </head>
-<body>
-    
-</body>
+
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
-<script src="./init.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDVxgbdPKOlm_p6erjUupoyaJHsPSpNpO0",
+        authDomain: "realtime-webchat-19c49.firebaseapp.com",
+        databaseURL: "https://realtime-webchat-19c49-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "realtime-webchat-19c49",
+        storageBucket: "realtime-webchat-19c49.appspot.com",
+        messagingSenderId: "1090572943809",
+        appId: "1:1090572943809:web:508b9fef9e75033863ef40",
+        measurementId: "G-RRSQ10B7Z8"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    let myName = prompt('닉네임을 입력하세요.');
+
+    function sendMessage() {
+        let message = document.getElementById('message').value;
+
+        firebase.database().ref('messages').push().set({
+            'sender': myName,
+            'message': message
+        });
+
+        return false;
+    }
+
+    function deleteMessage(self) {
+        let messageId = self.getAttribute('delete-id');
+
+        firebase.database().ref('messages').child(messageId).remove();
+    }
+
+    firebase.database().ref('messages').on('child_removed', (snapshot) => {
+        document.getElementById(`message-${snapshot.key}`).innerText = '해당 메세지 삭제됨';
+    });
+
+    firebase.database().ref('messages').on('child_added', (snapshot) => {
+        const main = document.getElementById('messages');
+        const message_li = document.createElement('li');
+        const deleteBtn = document.createElement('button');
+        let val = snapshot.val();
+
+        message_li.setAttribute('id', `message-${snapshot.key}`);
+        message_li.innerText = val.sender + ': ' + val.message;
+
+        if (val.sender === myName) {
+            deleteBtn.setAttribute('delete-id', snapshot.key);
+            deleteBtn.setAttribute('onclick', 'deleteMessage(this);');
+            deleteBtn.innerText = '삭제';
+            message_li.appendChild(deleteBtn);
+        }
+
+        main.appendChild(message_li);
+    });
+</script>
+
+<body>
+    <form onsubmit="return sendMessage();">
+        <input id='message' placeholder='메세지를 입력해주세요' autocomplete='off'>
+        <input type="submit">
+    </form>
+
+    <ul id="messages"></ul>
+</body>
+
 </html>
