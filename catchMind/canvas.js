@@ -1,16 +1,23 @@
-const $canvas = document.createElement('canvas'),
-    ctx = $canvas.getContext('2d');
+const $canvas = document.createElement('canvas');
+    
+const ctx = $canvas.getContext('2d'),
+    colors = document.getElementsByClassName('jsColor');
 
 $canvas.setAttribute('id', 'jsCanvas');
 $canvas.setAttribute('class', 'jsCanvas');
 
-let painting = false;
-
 $canvas.width = 700;
 $canvas.height = 700;
+let painting = false;
 
-ctx.strokeStyle = '#2c2c2c';
-ctx.lineWidth = 2.5;
+function setCanvas(color, width) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+}
+function handleRangeChange(e) {
+    console.log(e.target.value)
+    setCanvas(ctx.strokeStyle, e.target.value);
+}
 
 function startPainting() {
     painting = true;
@@ -42,12 +49,42 @@ function canvasEvent() {
     }
 }
 
+function handleColorClick(e) {
+    const color = e.target.style.backgroundColor;
+    setCanvas(color, getRange())
+}
+
+function getRange() {
+    const range = document.getElementsByClassName('controls-range-input');
+
+    return parseInt(range.value);
+}
+
 function init() {
     const body = document.querySelector('body');
 
     body.appendChild($canvas);
 
+    setCanvas('#2c2c2c', '2.5');
     canvasEvent();
+    
+    setTimeout(() => {
+        const range = document.getElementById('jsRange');
+
+        if (range)
+            range.addEventListener('input', handleRangeChange)
+    })
+
+    setTimeout(() => {
+        const range = document.getElementById('jsRange');
+
+        if (range)
+            range.addEventListener('input', handleRangeChange)
+
+        Array.from(colors).forEach(color => {
+            color.addEventListener('click', handleColorClick)
+        });
+    }, 0);
 }
 
 init();

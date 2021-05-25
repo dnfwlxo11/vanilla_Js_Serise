@@ -39,7 +39,7 @@ function createFalette() {
     COLORS.forEach(color => {
         const $control_color = document.createElement('div');
 
-        $control_color.setAttribute('class', 'controls-color');
+        $control_color.setAttribute('class', 'controls-color jsColor');
         $control_color.style.backgroundColor = color;
         $control_colors.appendChild($control_color);
     })
