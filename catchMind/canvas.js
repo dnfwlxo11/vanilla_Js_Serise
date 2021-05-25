@@ -8,6 +8,10 @@ $canvas.setAttribute('class', 'jsCanvas');
 
 $canvas.width = 700;
 $canvas.height = 700;
+
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, 700, 700);
+
 let painting = false;
 let mode = false;
 
@@ -46,6 +50,10 @@ function fillMode() {
     if (mode) ctx.fillRect(0, 0, 700, 700);
 }
 
+function handleMenu(e) {
+    e.preventDefault();
+}
+
 function canvasEvent() {
     if ($canvas) {
         $canvas.addEventListener('mousemove', onMouseMove);
@@ -53,6 +61,7 @@ function canvasEvent() {
         $canvas.addEventListener('mouseup', stopPainting);
         $canvas.addEventListener('mouseleave', stopPainting);
         $canvas.addEventListener('click', fillMode);
+        $canvas.addEventListener('contextmenu', handleMenu);
     }
 }
 
@@ -71,6 +80,15 @@ function handleMode() {
     })
 }
 
+function handleSave() {
+    const img = $canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = img;
+    link.download = 'export_Image';
+
+    link.click();
+}
+
 function getRange() {
     const range = document.getElementsByClassName('controls-range-input');
 
@@ -85,18 +103,23 @@ function init() {
     setCanvas('#2c2c2c', '2.5');
     canvasEvent();
 
-
     setTimeout(() => {
         const range = document.getElementById('jsRange');
+        const saveBtn = document.getElementById('jsSave');
 
         if (range)
-            range.addEventListener('input', handleRangeChange)
+            range.addEventListener('input', handleRangeChange);
 
         Array.from(colors).forEach(color => {
-            color.addEventListener('click', handleColorClick)
+            color.addEventListener('click', handleColorClick);
         });
 
         handleMode();
+
+        console.log(saveBtn, range)
+        if (saveBtn) {
+            saveBtn.addEventListener('click', handleSave);
+        }
     }, 0);
 }
 
