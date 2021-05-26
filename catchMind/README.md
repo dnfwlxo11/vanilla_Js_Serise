@@ -8,8 +8,8 @@
  
 
 
- - Guess the answer by looking at the draws 
+ - Guess the answer by looking at the draws  
  (출제자가 그리는 그림을 보고 답을 추측)
 
-- In the future, I plan to create a real game page using Node.js 
+- In the future, I plan to create a real game page using Node.js   
 (추후 Node.js를 사용해 실제 게임 페이지를 제작 예정)

@@ -5,11 +5,11 @@
 
 
 
-- Todo list made similar to Google's momentum 
+- Todo list made similar to Google's momentum  
 (구글의 momentum과 비슷하게 만든 Todo 리스트)
 
-- Use localstorage to store user information and todo 
+- Use localstorage to store user information and todo   
 (localstorage를 사용하여 사용자 정보와 todo를 저장)
 
-- show my local weather using openweather api
+- show my local weather using openweather api  
 (공개 날씨 api를 사용하여 내 지역의 날씨정보도 보여줌)
