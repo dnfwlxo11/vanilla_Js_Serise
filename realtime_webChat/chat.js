@@ -7,12 +7,13 @@ const $send_form = document.createElement('form'),
     $chat_ul = document.createElement('ul');
 
 $send_form.setAttribute('id', 'jsForm');
-$send_form.setAttribute('class', 'send_form');
+$send_form.setAttribute('class', 'send-form');
 $message_input.setAttribute('id', 'message');
-$message_input.setAttribute('class', 'message_input');
+$message_input.setAttribute('class', 'message-input');
 $message_input.setAttribute('type', 'text');
+$message_input.autofocus = true;
 $message_input.setAttribute('placeholder', '메세지를 입력해주세요.');
-$submit_input.setAttribute('class', 'submit_input');
+$submit_input.setAttribute('class', 'submit-input');
 $submit_input.setAttribute('type', 'submit');
 $chat_ul.setAttribute('id', 'messages');
 

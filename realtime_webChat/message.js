@@ -18,12 +18,14 @@ let myName = db.getName();
 function sendMessage(e) {
     e.preventDefault();
 
-    let message = document.getElementById('message').value;
+    let message = document.getElementById('message');
 
     firebase.database().ref('messages').push().set({
         'sender': myName,
-        'message': message
+        'message': message.value
     });
+
+    message.value = null;
 }
 
 function deleteMessage(e) {
