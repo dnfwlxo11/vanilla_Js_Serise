@@ -57,7 +57,7 @@ function init() {
 
     $control_btns.appendChild($control_btn_mode);
     $control_btns.appendChild($control_btn_save);
-    $control_btn_mode.innerText = '그리기모드'
+    $control_btn_mode.innerText = '연필모드'
     $control_btn_save.innerText = '저장하기'
 
     $control_div.appendChild($control_colors);
