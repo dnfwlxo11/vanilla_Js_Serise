@@ -1,6 +1,4 @@
-const { callbackify } = require("util");
-
-class PubSub {
+export default class PubSub {
     // 이벤트들을 관리하는 events라는 객체를 만듦
     constructor() {
         this.events = {};
@@ -10,26 +8,26 @@ class PubSub {
      * 만약 events에 들어온 이벤트가 없으면 새로운 배열을 할당
      * 있다면 events에 해당 이벤트 배열에 콜백함수를 넣음
      */
-    subscribe(e, cb) {
+    subscribe(event, callback) {
+
         let self = this;
 
-        if (!self.events.hasOwnProperty(e)) {
-            self.events[e] = [];
+        if (!self.events.hasOwnProperty(event)) {
+            self.events[event] = [];
         }
 
-        return self.events[e].push(cb);
+        return self.events[event].push(callback);
     }
-    
-    //
-    publish(e, data = {}) {
+
+    publish(event, data = {}) {
+
         let self = this;
 
-        if (!self.events.hasOwnProperty(e)) {
+        if (!self.events.hasOwnProperty(event)) {
             return [];
         }
 
-        return self.events[e].map(cb => callback(data));
+        return self.events[event].map(callback => callback(data));
     }
 }
 
-export default pubsub;
