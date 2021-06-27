@@ -15,6 +15,13 @@ function createTh(str, class_) {
     th.innerText = str;
     th.setAttribute('class', class_);
 
+    if(class_ === 'title') {
+        th.addEventListener('click', (e) => {
+            localStorage.setItem('current',  e.target.innerText);
+            window.location.href = 'content.html'
+        });
+    }
+
     return th
 }
 
@@ -24,11 +31,12 @@ function load() {
     }
 
     for (let i=0;i<localStorage.length; i++) {
+        if (localStorage.key(i) === 'current') continue;
+
         const item = localStorage.getItem(localStorage.key(i)).split(',');
         const tr = document.createElement('tr');
 
         tr.appendChild(createTh(item[0], 'title'));
-        tr.appendChild(createTh(item[1], 'content'));
         tr.appendChild(createTh(item[2], 'date'));
 
         board_body.appendChild(tr);

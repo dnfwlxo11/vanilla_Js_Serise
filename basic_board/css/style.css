@@ -29,13 +29,8 @@ th {
 }
 
 .title {
-    width: 30%;
+    width: 80%;
     background-color: rosybrown;
-}
-
-.content {
-    width: 50%;
-    background-color: royalblue;
 }
 
 .date {

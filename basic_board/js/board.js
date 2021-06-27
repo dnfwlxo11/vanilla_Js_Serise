@@ -6,7 +6,7 @@ const title = document.getElementById('title'),
 submit_btn.addEventListener('click', () => {
     const date = dateCalc(new Date());
     
-    localStorage.setItem(title.value + date, title.value + ',' + content.value + ',' + date);
+    localStorage.setItem(title.value, title.value + ',' + content.value + ',' + date);
     
     window.location.href = 'index.html';
 })
