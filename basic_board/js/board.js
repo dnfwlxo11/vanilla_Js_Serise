@@ -5,10 +5,16 @@ const title = document.getElementById('title'),
 
 submit_btn.addEventListener('click', () => {
     const date = dateCalc(new Date());
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+
+    if(title === '' || content === '') {
+        alert('빈 칸이 있습니다.')
+    } else {
+        localStorage.setItem(title, title + ',' + content + ',' + date);
     
-    localStorage.setItem(title.value, title.value + ',' + content.value + ',' + date);
-    
-    window.location.href = 'index.html';
+        window.location.href = 'index.html';
+    }
 })
 
 cancel_btn.addEventListener('click', () => {
