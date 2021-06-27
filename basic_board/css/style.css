@@ -18,6 +18,8 @@ th {
 
 .wrapper {
     display: inline-block;
+    height: 100%;
+    width: 100%;
 }
 
 .board-div {
@@ -29,8 +31,22 @@ th {
 }
 
 .title {
-    width: 80%;
     background-color: rosybrown;
+}
+
+.content {
+    background-color: slateblue;
+}
+
+.wrapper > .title {
+    margin-bottom: 10px;
+    height: 20%;
+    font-size: 100px;
+}
+
+.wrapper > .content {
+    height: 60%;
+    font-size: 40px;
 }
 
 .date {
