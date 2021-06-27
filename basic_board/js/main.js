@@ -10,9 +10,10 @@ refresh_btn.addEventListener('click', () => {
     load();
 })
 
-function createTh(str) {
+function createTh(str, class_) {
     const th = document.createElement('th');
     th.innerText = str;
+    th.setAttribute('class', class_);
 
     return th
 }
@@ -26,9 +27,9 @@ function load() {
         const item = localStorage.getItem(localStorage.key(i)).split(',');
         const tr = document.createElement('tr');
 
-        tr.appendChild(createTh(item[0]));
-        tr.appendChild(createTh(item[1]));
-        tr.appendChild(createTh(item[2]));
+        tr.appendChild(createTh(item[0], 'title'));
+        tr.appendChild(createTh(item[1], 'content'));
+        tr.appendChild(createTh(item[2], 'date'));
 
         board_body.appendChild(tr);
     }

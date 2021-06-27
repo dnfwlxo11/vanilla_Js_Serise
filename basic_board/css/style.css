@@ -9,16 +9,36 @@ body {
 
 table {
     text-align: center;
-}
-
-tr {
     margin: 15px;
 }
 
 th {
-    margin: 15px;
+    padding: 15px;
 }
 
 .wrapper {
     display: inline-block;
+}
+
+.board-div {
+    display: inline-block;
+}
+
+.first-line {
+    background-color: silver;
+}
+
+.title {
+    width: 30%;
+    background-color: rosybrown;
+}
+
+.content {
+    width: 50%;
+    background-color: royalblue;
+}
+
+.date {
+    width: 20%;
+    background-color: salmon;
 }
